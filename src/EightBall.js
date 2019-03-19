@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./EightBall.css"
 
 class EightBall extends Component {
     static defaultProps = { 
@@ -32,6 +33,25 @@ class EightBall extends Component {
             msg: "Think of a Question",
             color: "black"
         };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    getRandom(){
+        return Math.floor(Math.random() * this.props.answers.length);
+    }
+    
+    handleClick(evt) {
+        this.setState(this.props.answers[this.getRandom()])
+        // {msg: this.props.answers[this.getRandom()].msg, color: this.props.answers[this.getRandom()].color}
+    }
+
+    render() {
+        const color = {color: "white", backgroundColor: this.state.color}
+        return (
+            <button className="btn" onClick={this.handleClick} style={color}>
+                {this.state.msg}
+            </button>
+        );
     }
 }
 
