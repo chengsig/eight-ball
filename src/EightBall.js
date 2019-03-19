@@ -36,19 +36,21 @@ class EightBall extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    getRandom(){
-        return Math.floor(Math.random() * this.props.answers.length);
+    // takes array and returns randomly selected item
+    getRandomItem(arr){
+        let randomIdx = Math.floor(Math.random() * arr.length)
+        return arr[randomIdx];
     }
     
     handleClick(evt) {
-        this.setState(this.props.answers[this.getRandom()])
+        this.setState(this.getRandomItem(this.props.answers));
         // {msg: this.props.answers[this.getRandom()].msg, color: this.props.answers[this.getRandom()].color}
     }
 
     render() {
         const color = {color: "white", backgroundColor: this.state.color}
         return (
-            <button className="btn" onClick={this.handleClick} style={color}>
+            <button className="EightBall" onClick={this.handleClick} style={color}>
                 {this.state.msg}
             </button>
         );
