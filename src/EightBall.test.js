@@ -19,3 +19,18 @@ it('it renders the updated states correctly"', function () {
     wrapper.setState({msg: "Test"});
     expect(wrapper.state().msg).toEqual("Test");
 });
+
+it('it renders the updated states correctly"', function () {
+    let wrapper = mount(<EightBall />);
+
+    wrapper.simulate("click");
+    expect(wrapper.state().msg).not.toEqual("Think of a Question");
+});
+
+it('it renders the updated states correctly"', function () {
+    let wrapper = mount(<EightBall answers={[{ msg: "It is certain.", color: "green" }]}/>);
+
+    wrapper.simulate("click");
+    expect(wrapper.state().msg === "It is certain.").toEqual(true);
+    expect(wrapper.state().color === "green").toEqual(true);
+});
